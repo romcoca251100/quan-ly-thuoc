@@ -15,6 +15,10 @@ class CreateHoaDonXuatsTable extends Migration
     {
         Schema::create('hoa_don_xuats', function (Blueprint $table) {
             $table->id();
+            $table->integer('nhan_vien_id');
+            $table->integer('khach_hang_id');
+            $table->date('ngay_lap');
+            $table->double('tong_tien');
             $table->timestamps();
         });
     }

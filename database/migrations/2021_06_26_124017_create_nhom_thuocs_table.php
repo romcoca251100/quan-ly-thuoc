@@ -15,6 +15,8 @@ class CreateNhomThuocsTable extends Migration
     {
         Schema::create('nhom_thuocs', function (Blueprint $table) {
             $table->id();
+            $table->string('ten_nhom_thuoc');
+            $table->string('slug');
             $table->timestamps();
         });
     }

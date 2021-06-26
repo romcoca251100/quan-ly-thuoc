@@ -15,6 +15,8 @@ class CreateHoaDonNhapsTable extends Migration
     {
         Schema::create('hoa_don_nhaps', function (Blueprint $table) {
             $table->id();
+            $table->integer('nhan_vien_id');
+            $table->date('ngay_lap');
             $table->timestamps();
         });
     }

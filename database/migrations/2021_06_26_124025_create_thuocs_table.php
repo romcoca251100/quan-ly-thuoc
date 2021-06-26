@@ -15,6 +15,13 @@ class CreateThuocsTable extends Migration
     {
         Schema::create('thuocs', function (Blueprint $table) {
             $table->id();
+            $table->integer('nhom_thuoc_id');
+            $table->string('ten_thuoc');
+            $table->string('slug');
+            $table->bigInteger('so_luong');
+            $table->double('don_gia_nhap');
+            $table->double('don_gia_ban');
+            $table->text('ghi_chu');
             $table->timestamps();
         });
     }

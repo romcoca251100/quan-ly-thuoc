@@ -15,6 +15,12 @@ class CreateChiTietHoaDonXuatsTable extends Migration
     {
         Schema::create('chi_tiet_hoa_don_xuats', function (Blueprint $table) {
             $table->id();
+            $table->integer('hoa_don_xuat_id');
+            $table->integer('thuoc_id');
+            $table->bigInteger('so_luong');
+            $table->double('don_gia');
+            $table->double('giam_gia');
+            $table->double('thanh_tien');
             $table->timestamps();
         });
     }

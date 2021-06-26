@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('pages.index');
+})->name('index');
+
+Route::get('/gioi-thieu', function () {
+    return view('pages.gioi-thieu');
+})->name('index.getGioiThieu');
+
+Route::get('/lien-he', function () {
+    return view('pages.lien-he');
+})->name('index.getLienHe');
+
+Route::get('/dang-nhap', function () {
+    return view('pages.layouts.signin');
+})->name('login');

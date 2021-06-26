@@ -16,6 +16,12 @@
                                         class="nav-item">{{ $item->name }}</a></li>
                             @endforeach
                         @endif
+                        <li class="item-menu-product"><a
+                            href=""
+                            class="nav-item">Loại 1</a></li>
+                            <li class="item-menu-product"><a
+                                href=""
+                                class="nav-item">Loại 2</a></li>
                     </ul>
                 </section>
                 <section id="contact-menu">

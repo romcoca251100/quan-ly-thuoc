@@ -41,10 +41,10 @@ class User extends Authenticatable
     ];
 
     public function nhan_vien() {
-        return $this->belongsTo(NhanVien::class);
+        return $this->hasOne(NhanVien::class, 'user_id');
     }
 
     public function khach_hang() {
-        return $this->belongsTo(KhachHang::class);
+        return $this->hasOne(KhachHang::class, 'user_id');
     }
 }

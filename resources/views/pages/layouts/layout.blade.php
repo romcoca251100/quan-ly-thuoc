@@ -94,7 +94,6 @@
                                 <h6>* CỬA HÀNG 1:</h6>
                                 <p><i class="fas fa-map-pin"></i> Số 54, Triều Khúc, Thanh Xuân, Hà
                                     Nội</p>
-                                    <br>
                                 <p><i class="fas fa-phone-square"></i> +84 123 456 789</p>
                             </li>
                         </ul>

@@ -19,6 +19,7 @@ class CreateHoaDonXuatsTable extends Migration
             $table->integer('khach_hang_id');
             $table->date('ngay_lap');
             $table->double('tong_tien');
+            $table->integer('status');
             $table->timestamps();
         });
     }

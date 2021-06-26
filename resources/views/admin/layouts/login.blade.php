@@ -26,7 +26,7 @@
                         <h3 class="panel-title">Vui lòng đăng nhập</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="" method="POST" role="form">
+                        <form action="{{ route('admin.postLogin')}}" method="POST" role="form">
                             @csrf
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Ghi nhớ đăng nhập lần sau
+                                        <input name="remember" type="checkbox" value="">Ghi nhớ đăng nhập lần sau
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->

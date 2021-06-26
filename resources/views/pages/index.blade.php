@@ -30,6 +30,127 @@
                         </p>
                     </div>
                 </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                <li class="product-item pd-list">
+                    <div class="wrap-product">
+                        <div class="img-product">
+                            <a href="" class="hover-img-product"><img width="300" height="225" src="" alt=""></a>
+                        </div>
+                        <h3 class="title-product" style="margin-bottom: 15px;">
+                            <a href="">Tên sản phẩm</a> 
+                            <br>
+                            (<a href="" style="font-weight: 500">Loại thuốc</a>)
+                        </h3>
+                        <p class="price-product">
+                            20.000 VNĐ
+                        </p>
+                    </div>
+                </li>
+                
             </ul>
         </div>
         <h3 class="heading-more">

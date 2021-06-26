@@ -28,20 +28,20 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Trang quản trị</a>
+                <a class="navbar-brand" href="{{ route('admin.index') }}">Trang quản trị</a>
             </div>
 
             <ul class="nav navbar-right navbar-top-links">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> Name <b class="caret"></b>
+                        <i class="fa fa-user fa-fw"></i> {{ Auth::user()->nhan_vien->ho_ten }} <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href=""><i class="fa fa-user fa-fw"></i> Thông tin
                                 tài khoản</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
                     </ul>
                 </li>
@@ -54,23 +54,23 @@
                         <li>
                             <a href="" class="active"><i class="fa fa-dashboard fa-fw"></i>
                                 Trang chủ</a>
-                        </li>   
-                        @if (true)
-                        <li>
-                            <a href=""><i class="fa fa-pied-piper-pp fa-fw"></i> Quản lý nhóm thuốc  </a>
                         </li>
                             <li>
-                                <a href=""><i class="fa fa-product-hunt fa-fw"></i> Quản lý thuốc  </a>
+                                <a href="{{ route('admin.nhomthuoc.index') }}"><i class="fa fa-pied-piper-pp fa-fw"></i> Quản lý nhóm thuốc </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.thuoc.index') }}"><i class="fa fa-product-hunt fa-fw"></i> Quản lý thuốc </a>
                             </li>
                             <li>
                                 <a href=""><i class="fa fa-paste fa-fw"></i> Quản lý hoá đơn bán thuốc</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-share-square-o fa-fw"></i> Quản lý nhập thuốc</a>
+                                <a href="{{ route('admin.hoadonnhap.index') }}"><i class="fa fa-share-square-o fa-fw"></i> Quản lý nhập thuốc</a>
                             </li>
                             <li>
                                 <a href=""><i class="fa fa-group fa-fw"></i> Quản lý khách hàng</a>
                             </li>
+                        @if (Auth::user()->role == 1)
                             <li>
                                 <a href=""><i class="fa fa-group fa-fw"></i> Quản lý nhân viên</a>
                             </li>
@@ -108,7 +108,6 @@
                 responsive: true
             });
         });
-
     </script>
 
     <script>
@@ -119,7 +118,6 @@
             else
                 return false;
         }
-
     </script>
 
     <script>
@@ -128,13 +126,11 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
     </script>
     <script type="text/javascript">
         $(".alert").fadeTo(4500, 800).slideUp(800, function() {
             $(".alert").slideUp(800);
         });
-
     </script>
     @yield('script')
 </body>

@@ -17,3 +17,7 @@
 <p> - Gõ lệnh : <i>php artisan serve</i> để chạy project</p>
 
 <hr>
+
+<p>Link đăng nhập admin: http://127.0.0.1:8000/admin/dang-nhap</p>
+<p>Tài khoản: amdin</p>
+<p>Mật khẩu: 12345678</p>

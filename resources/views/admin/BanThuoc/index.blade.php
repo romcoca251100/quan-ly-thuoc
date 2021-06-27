@@ -39,29 +39,31 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên nhóm thuốc</th>
+                                    <th>Mã hoá đơn</th>
+                                    <th>Họ tên khách hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Trạng thái</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (isset($nhomthuoc))
-                                    @php $i = 1
-                                    @endphp
-                                    @foreach ($nhomthuoc as $item)
-                                        <tr class="odd gradeX">
-                                            <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
-                                            </td>
-                                            <td class="" style="font-weight: 600; color: rgb(231, 38, 38)">
-                                                {{ $item->ten_nhom_thuoc }}</td>
-                                            <td class="center" style="text-align: center;">
-                                                <a class="btn btn-success btn-xs btn-edit" href="#"
-                                                    data-url="{{ route('admin.nhomthuoc.getEdit', ['id' => $item->id]) }}"
-                                                    ​><i class="fa fa-edit"></i> Sửa</a>
-                                                <a class="btn btn-danger btn-xs"
-                                                    href="{{ route('admin.nhomthuoc.getDelete', ['id' => $item->id]) }}"
-                                                    onclick="return ConfirmDelete()"><i class="fa fa-trash"></i> Xoá</a>
-                                            </td>
-                                        </tr>
+                                @if (isset($hoadonxuat))
+                                    <?php $i = 1;
+                                   ?>
+                                    @foreach ($hoadonxuat as $item)
+                                        @if ($item->khach_hang)
+                                            <tr class="odd gradeX">
+                                                <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
+                                                </td>
+                                                <td style="text-align: center; color: red"> <b> {{ $item->id }}</b></td>
+                                                <td>{{ $item->khach_hang->ho_ten }}</td>
+                                                <td>{{ $item->tong_tien }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
+                                                <td>Trạng thái</td>
+                                                <td>In hoá đơn</td>
+                                            </>
+                                        @endif
                                     @endforeach
                                 @endif
                             </tbody>

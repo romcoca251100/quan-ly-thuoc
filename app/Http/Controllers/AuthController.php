@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\Models\NhanVien;
 use App\Models\User;
 use App\Models\KhachHang;
+use App\Models\HoaDonXuat;
 
 class AuthController extends Controller
 {
@@ -104,6 +106,26 @@ class AuthController extends Controller
     }
 
     public function getProfile() {
-        return view('pages.profile');
+        $hdx = HoaDonXuat::where('khach_hang_id', '=', Auth::user()->khach_hang->id)->get();
+        $viewData = [
+            'hdx' => $hdx,
+        ];
+        return view('pages.profile', $viewData);
+    } 
+    
+    public function postUserPassword(Request $request) {
+        $user = Auth::user();
+
+        if(!(Hash::check($request->oldPassword, $user->password))) {
+    		return redirect()->back()->with('loi', 'Sai mật khẩu cũ!');
+
+    	} else if(strcmp($request->oldPassword, $request->password) == 0){
+    		return redirect()->back()->with('loi', 'Mật khẩu mới trùng mật khẩu cũ!');
+
+    	}
+    	//change password
+    	$user->password = bcrypt($request->password);
+    	$user->save();
+        return redirect()->back()->with('thongbao', 'Thay đổi mật khẩu thành công!');
     }
 }

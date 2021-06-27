@@ -36,6 +36,8 @@ Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->name('inde
 Route::prefix('nguoi-dung')->middleware('user.login')->group(function () {
     Route::get('/thong-tin', [AuthController::class, 'getProfile'])->name('index.getProfile');
 
+    Route::post('/doi-mat-khau', [AuthController::class, 'postUserPassword'])->name('index.postUserPassword');
+
     Route::get('/dang-xuat', [AuthController::class, 'userLogout'])->name('index.userLogout');
 });
 
@@ -50,8 +52,13 @@ Route::prefix('gio-hang')->group(function () {
     Route::get('/xoa/{id}', [CartController::class, 'getDelete'])->name('index.getDelete');
 });
 
+Route::get('/thong-bao', [PageController::class, 'getThanhCong'])->name('index.getThanhCong');
+
 Route::prefix('thanh-toan')->middleware('payment')->group(function () {
     Route::get('/', [PageController::class, 'getPayment'])->name('index.getPayment');
+
+    Route::post('/', [PageController::class, 'postPayment'])->name('index.postPayment');
+
 });
 
 //Admin

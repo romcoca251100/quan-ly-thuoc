@@ -17,10 +17,10 @@ class CreateChiTietHoaDonXuatsTable extends Migration
             $table->id();
             $table->integer('hoa_don_xuat_id');
             $table->integer('thuoc_id');
-            $table->bigInteger('so_luong');
-            $table->double('don_gia');
-            $table->double('giam_gia');
-            $table->double('thanh_tien');
+            $table->bigInteger('so_luong')->nullable()->default(0);
+            $table->double('don_gia')->nullable()->default(0);
+            $table->double('giam_gia')->nullable()->default(0);
+            $table->double('thanh_tien')->nullable()->default(0);
             $table->timestamps();
         });
     }

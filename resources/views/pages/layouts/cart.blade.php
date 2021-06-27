@@ -71,7 +71,7 @@
                     @endif
                 </p>
                 <hr>
-                <a href="#" class="btn btn-success">Thanh toán</a>
+                <a href="{{ route('index.getPayment') }}" class="btn btn-success">Thanh toán</a>
             </div>
         </div>
     </div>

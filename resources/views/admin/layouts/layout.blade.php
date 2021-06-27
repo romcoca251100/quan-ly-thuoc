@@ -62,7 +62,7 @@
                                 <a href="{{ route('admin.thuoc.index') }}"><i class="fa fa-product-hunt fa-fw"></i> Quản lý thuốc </a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-paste fa-fw"></i> Quản lý hoá đơn bán thuốc</a>
+                                <a href="{{ route('admin.hoadonxuat.index') }}"><i class="fa fa-paste fa-fw"></i> Quản lý hoá đơn bán thuốc</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.hoadonnhap.index') }}"><i class="fa fa-share-square-o fa-fw"></i> Quản lý nhập thuốc</a>

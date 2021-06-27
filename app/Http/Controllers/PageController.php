@@ -53,8 +53,10 @@ class PageController extends Controller
         ];
         return view('pages.chi-tiet-thuoc', $viewData);
     }
-
-    public function getCart() {
-        return view('pages.gio-hang');
+    
+    public function getPayment() {
+        return view('pages.thanh-toan');
     }
+
+    
 }

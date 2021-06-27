@@ -34,12 +34,11 @@
                                 {{ number_format($thuoc->don_gia_ban) }} VNĐ
                         </font>
                     </p>
-                    <div class="buy-share">
+
                         <div class="buy">
-                            <a href="" class="btn-buy" data-toggle="modal" data-target="#fomr-lh">Thêm vào giỏ hàng</a>
+                            <a style="cursor: pointer; color: white;" class="btn-buy" onclick="addCart({{ $thuoc->id }})" data-id="{{ $thuoc->id }}">Thêm vào giỏ hàng</a>
                         </div>
-                        
-                    </div>
+         
 
                 </div>
             </div>
@@ -76,13 +75,13 @@
                                         <h3 class="title-product">
                                             <a href="{{ route('index.getThuocDetail', ['nhom_slug' => $item->nhom_thuoc->slug, 'nhom_id' => $item->nhom_thuoc->id, 'thuoc_slug' => $item->slug, 'thuoc_id' => $item->id]) }}">{{ $item->ten_thuoc }}</a>
                                             <br>
-                                            (<a href="{{ route('index.getNhomThuoc', ['slug'=>$item->slug, 'id' => $item->id]) }}" style="font-weight: 400">{{ $item->nhom_thuoc->ten_nhom_thuoc }}</a>)
+                                            (<a href="{{ route('index.getNhomThuoc', ['slug'=>$item->nhom_thuoc->slug, 'id' => $item->nhom_thuoc->id]) }}" style="font-weight: 400">{{ $item->nhom_thuoc->ten_nhom_thuoc }}</a>)
                                         </h3>
                                         <p class="price-product">
                                             {{ number_format($item->don_gia_ban) }} VNĐ
                                         </p>
                                         <div class="buy">
-                                            <a href="" class="btn-buy" data-toggle="modal" data-target="#fomr-lh">Thêm vào giỏ hàng</a>
+                                            <a style="cursor: pointer; color: white;" class="btn-buy" onclick="addCart({{ $item->id }})" data-id="{{ $item->id }}">Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                 </li>

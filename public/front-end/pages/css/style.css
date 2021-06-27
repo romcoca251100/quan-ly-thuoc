@@ -357,9 +357,9 @@ label {
 .list-products li.product-item.pd-list {
     position: relative;
     width: 100%;
-    min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
+    max-height: 500px;
 }
 
 .list-products li .wrap-product:hover {

@@ -28,8 +28,6 @@ Route::get('/thuoc', [PageController::class, 'getThuoc'])->name('index.getThuoc'
 
 Route::get('/{nhom_slug}&id={nhom_id}/{thuoc_slug}&id={thuoc_id}', [PageController::class, 'getThuocDetail'])->name('index.getThuocDetail');
 
-Route::get('/gio-hang', [PageController::class, 'getCart'])->name('index.getCart');
-
 Route::get('/dang-nhap', [PageController::class, 'getLogin'])->name('index.login');
 Route::post('/dang-nhap', [AuthController::class, 'postUserLogin'])->name('index.postUserLogin');
 Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->name('index.postUserRegister');
@@ -39,6 +37,21 @@ Route::prefix('nguoi-dung')->middleware('user.login')->group(function () {
     Route::get('/thong-tin', [AuthController::class, 'getProfile'])->name('index.getProfile');
 
     Route::get('/dang-xuat', [AuthController::class, 'userLogout'])->name('index.userLogout');
+});
+
+Route::prefix('gio-hang')->group(function () {
+    Route::get('/', [CartController::class, 'getCart'])->name('index.getCart');
+    Route::get('/cart', [CartController::class, 'getCartTemp'])->name('cart');
+
+    Route::get('/them/{id}', [CartController::class, 'addCart'])->name('index.addCart');
+
+    Route::get('/sua/{id}/{tong}', [CartController::class, 'updateCart'])->name('index.updateCart');
+
+    Route::get('/xoa/{id}', [CartController::class, 'getDelete'])->name('index.getDelete');
+});
+
+Route::prefix('thanh-toan')->middleware('payment')->group(function () {
+    Route::get('/', [PageController::class, 'getPayment'])->name('index.getPayment');
 });
 
 //Admin

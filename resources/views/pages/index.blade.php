@@ -27,7 +27,7 @@
                                 <div class="wrap-product">
                                     <div class="img-product">
                                         <a href="{{ route('index.getThuocDetail', ['nhom_slug' => $item->nhom_thuoc->slug, 'nhom_id' => $item->nhom_thuoc->id, 'thuoc_slug' => $item->slug, 'thuoc_id' => $item->id]) }}"
-                                            class="hover-img-product"><img width="300" height="225"
+                                            class="hover-img-product"><img width="300" height="185"
                                                 src="{{ asset($item->hinh_anh) }}" alt=""></a>
                                     </div>
                                     <h3 class="title-product" style="margin-bottom: 15px;">
@@ -41,7 +41,7 @@
                                         {{ number_format($item->don_gia_ban) }} VNĐ
                                     </p>
                                     <div class="buy">
-                                        <a href="" class="btn-buy" data-toggle="modal" data-target="#fomr-lh">Thêm vào giỏ hàng</a>
+                                        <a style="cursor: pointer; color: white;" class="btn-buy" onclick="addCart({{ $item->id }})" data-id="{{ $item->id }}">Thêm vào giỏ hàng</a>
                                     </div>
                                 </div>
                             </li>

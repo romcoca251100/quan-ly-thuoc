@@ -38,7 +38,7 @@
                                                 {{ number_format($thuoc->don_gia_ban) }} VNĐ
                                             </p>
                                             <div class="buy">
-                                                <a href="" class="btn-buy" data-toggle="modal" data-target="#fomr-lh">Thêm vào giỏ hàng</a>
+                                                <a style="cursor: pointer; color: white;" class="btn-buy" onclick="addCart({{ $thuoc->id }})" data-id="{{ $thuoc->id }}">Thêm vào giỏ hàng</a>
                                             </div>
                                         </div>
                                     </li>

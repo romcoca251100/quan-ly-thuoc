@@ -16,10 +16,6 @@ class UserLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::check()) {
-            return $next($request);
-        } else {
-            return redirect()->back();
-        }
+        return $next($request);
     }
 }

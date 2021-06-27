@@ -46,10 +46,10 @@
                                     alt="Hiệu thuốc UTT" class="logo"><span id="webname">Hiệu thuốc UTT</span></a>
                         </div>
                         <div class="banner float-right" style="text-align: right;">
-                            <a href=""><i class="fas fa-shopping-cart"></i> Giỏ hàng </a>
+                            <a href="{{ route('index.getCart') }}"><i class="fas fa-shopping-cart"></i> Giỏ hàng </a>
                             |
                             @if(Auth::check() && Auth::user()->role == 3)
-                            Xin chào <a href=""><i class="fas fa-user"></i> {{ Auth::user()->khach_hang->ho_ten }} </a> 
+                            Xin chào <a href="{{ route('index.getProfile') }}"><i class="fas fa-user"></i> {{ Auth::user()->khach_hang->ho_ten }} </a> 
                             |
                             <a href="{{ route('index.userLogout') }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất </a>
                             @else

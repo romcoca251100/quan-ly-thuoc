@@ -102,4 +102,8 @@ class AuthController extends Controller
 
         return redirect()->back()->with('thongbao2', 'Bạn đã đăng ký thành công! Hãy đăng nhập.');
     }
+
+    public function getProfile() {
+        return view('pages.profile');
+    }
 }

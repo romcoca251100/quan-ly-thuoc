@@ -20,8 +20,9 @@
         <div class="show-product coloum-4">
             <ul class="row list-products">
                 @if (isset($thuoc))
+                <?php $i = 0; ?>
                     @foreach ($thuoc as $item)
-                        @if ($item->nhom_thuoc)
+                        @if ($item->nhom_thuoc && $i < 12)
                             <li class="product-item pd-list">
                                 <div class="wrap-product">
                                     <div class="img-product">
@@ -44,6 +45,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <?php $i++; ?>
                         @endif
                     @endforeach
                 @endif

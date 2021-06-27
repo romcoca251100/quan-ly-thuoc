@@ -55,46 +55,43 @@
             </div>
         </div>
     @endif
-    {{-- <div class="orther-products">
+    <div class="orther-products">
         <div class="title-orther">
-            <h3>SẢN PHẨM KHÁC</h3>
+            <h3>SẢN PHẨM LIÊN QUAN</h3>
         </div>
         <div class="content-orther-product">
             <ul class="row list-products">
                 <?php $i = 1; ?>
-                @foreach ($sp->loaisanpham->sanpham as $item)
-                    @if ($item->id != $sp->id)
-                        @if ($item->hien_thi == 1)
+                @foreach ($thuoc->nhom_thuoc->thuoc as $item)
+                    @if ($item->id != $thuoc->id)
                             @if ($i < 4)
                                 <li class="product-item pd-list">
                                     <div class="wrap-product">
                                         <div class="img-product">
-                                            <a href="{{ route('getSP', ['loai-san-pham' => $item->loaisanpham->slug, 'id' => $item->id, 'ten-san-pham' => $item->slug]) }}"
+                                            <a href="{{ route('index.getThuocDetail', ['nhom_slug' => $item->nhom_thuoc->slug, 'nhom_id' => $item->nhom_thuoc->id, 'thuoc_slug' => $item->slug, 'thuoc_id' => $item->id]) }}"
                                                 class="hover-img-product"><img width="300" height="225"
-                                                    src="{{ asset('upload/sanpham/' . $item->hinh_anh) }}"
+                                                    src="{{ asset($item->hinh_anh) }}"
                                                     alt="product-1"></a>
                                         </div>
                                         <h3 class="title-product">
-                                            <a
-                                                href="{{ route('getSP', ['loai-san-pham' => $item->loaisanpham->slug, 'id' => $item->id, 'ten-san-pham' => $item->slug]) }}">{{ $item->name }}</a>
+                                            <a href="{{ route('index.getThuocDetail', ['nhom_slug' => $item->nhom_thuoc->slug, 'nhom_id' => $item->nhom_thuoc->id, 'thuoc_slug' => $item->slug, 'thuoc_id' => $item->id]) }}">{{ $item->ten_thuoc }}</a>
+                                            <br>
+                                            (<a href="{{ route('index.getNhomThuoc', ['slug'=>$item->slug, 'id' => $item->id]) }}" style="font-weight: 400">{{ $item->nhom_thuoc->ten_nhom_thuoc }}</a>)
                                         </h3>
                                         <p class="price-product">
-                                            @if ($item->gia != 0)
-                                                {{ number_format($item->gia) }} VNĐ
-                                            @else
-                                                Liên hệ
-                                            @endif
+                                            {{ number_format($item->don_gia_ban) }} VNĐ
                                         </p>
+                                        <div class="buy">
+                                            <a href="" class="btn-buy" data-toggle="modal" data-target="#fomr-lh">Thêm vào giỏ hàng</a>
+                                        </div>
                                     </div>
                                 </li>
                             @endif
                             <?php $i++; ?>
-                        @endif
                     @endif
-
                 @endforeach
             </ul>
         </div>
-    </div> --}}
+    </div>
 
 @endsection

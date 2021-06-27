@@ -52,7 +52,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="" class="active"><i class="fa fa-dashboard fa-fw"></i>
+                            <a href="{{ route('admin.index') }}" class="active"><i class="fa fa-dashboard fa-fw"></i>
                                 Trang chủ</a>
                         </li>
                             <li>

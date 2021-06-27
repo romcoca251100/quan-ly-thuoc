@@ -52,16 +52,18 @@
                                     @php $i = 1;
                                     @endphp
                                     @foreach ($user as $item)
-                                        <tr class="odd gradeX">
-                                            <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
-                                            </td>
-                                            <td class="">{{ $item->khach_hang->ho_ten }}</td>
-                                            <td class="" style="">{{ $item->email }}</td>
-                                            <td class="" style="">{{ $item->khach_hang->dien_thoai }}</td>
-                                            <td class="" style="">
-                                                {{ date('d/m/Y', strtotime($item->khach_hang->ngay_sinh)) }}</td>
-                                                <td class="" style="">{{ $item->khach_hang->dia_chi }}</td>
-                                        </tr>
+                                        @if($item->khach_hang)
+                                            <tr class="odd gradeX">
+                                                <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
+                                                </td>
+                                                <td class="">{{ $item->khach_hang->ho_ten }}</td>
+                                                <td class="" style="">{{ $item->email }}</td>
+                                                <td class="" style="">{{ $item->khach_hang->dien_thoai }}</td>
+                                                <td class="" style="">
+                                                    {{ date('d/m/Y', strtotime($item->khach_hang->ngay_sinh)) }}</td>
+                                                    <td class="" style="">{{ $item->khach_hang->dia_chi }}</td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 @endif
                             </tbody>

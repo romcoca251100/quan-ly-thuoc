@@ -9,19 +9,13 @@
                 <section id="title-menu">
                     <h2 class="widget-title">Danh mục sản phẩm</h2>
                     <ul id="menu-items">
-                        @if (isset($lsp))
-                            @foreach ($lsp as $item)
+                        @if (isset($nhomthuoc))
+                            @foreach ($nhomthuoc as $item)
                                 <li class="item-menu-product"><a
-                                        href="{{ route('getTrangLSP', ['id' => $item->id, 'slug' => $item->slug]) }}"
-                                        class="nav-item">{{ $item->name }}</a></li>
+                                        href="{{ route('index.getNhomThuoc', ['slug'=>$item->slug,'id' => $item->id]) }}"
+                                        class="nav-item">{{ $item->ten_nhom_thuoc }}</a></li>
                             @endforeach
                         @endif
-                        <li class="item-menu-product"><a
-                            href=""
-                            class="nav-item">Loại 1</a></li>
-                            <li class="item-menu-product"><a
-                                href=""
-                                class="nav-item">Loại 2</a></li>
                     </ul>
                 </section>
                 <section id="contact-menu">

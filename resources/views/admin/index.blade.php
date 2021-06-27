@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-        <a href="">
+        <a href="{{ route('admin.khachhang.index') }}">
             <div class="panel-footer">
                 <span class="pull-left">Truy cập</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -139,7 +139,7 @@
                 </div>
             </div>
         </div>
-        <a href="">
+        <a href="{{ route('admin.nhanvien.index') }}">
             <div class="panel-footer">
                 <span class="pull-left">Truy cập</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

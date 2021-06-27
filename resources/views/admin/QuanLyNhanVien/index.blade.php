@@ -1,13 +1,13 @@
 @extends('admin.layouts.layout')
 
 @section('head')
-    <title>Danh sách thuốc</title>
+    <title>Quản lý nhân viên</title>
 @endsection
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Danh sách thuốc</h1>
+            <h1 class="page-header">Danh sách tài khoản nhân viên</h1>
         </div>
     </div>
     @if (count($errors) > 0)
@@ -26,12 +26,11 @@
             {{ session('thongbao') }}
         </div>
     @endif
-
     <div class="row">
         <div class="col-lg-12">
             <p>
-                <a class="btn btn-primary" href="{{ route('admin.hoadonnhap.getAdd') }}"> <i class="fa fa-plus"></i>
-                    Thêm thuốc</a>
+                <a class="btn btn-primary" href="{{ route('admin.nhanvien.getAdd') }}"> <i class="fa fa-plus"></i>
+                    Thêm mới</a>
             <p>
         </div>
     </div>
@@ -40,7 +39,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Danh sách thuốc
+                    Danh sách tài khoản nhân viên
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -49,41 +48,36 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên thuốc</th>
-                                    <th>Nhóm thuốc</th>
-                                    <th>Số lượng</th>
-                                    <th>Đơn giá nhập</th>
-                                    <th>Đơn giá bán</th>
-                                    <th>Ghi chú</th>
+                                    <th>Họ tên</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Giới tính</th>
+                                    <th>Địa chỉ</th>
                                     <th>Chức năng</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                @if (isset($thuoc))
-                                    <?php $i = 1; ?>
-                                    @foreach ($thuoc as $item)
+                                @if (isset($user))
+                                    @php $i = 1
+                                    @endphp
+                                    @foreach ($user as $item)
                                         <tr class="odd gradeX">
                                             <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
                                             </td>
-                                            <td class="" style="font-weight: 600; color: rgb(231, 38, 38)">
-                                                {{ $item->ten_thuoc }}</td>
+                                            <td class="">{{ $item->nhan_vien->ho_ten }}</td>
+                                            <td class="" style="">{{ $item->email }}</td>
+                                            <td class="" style="">{{ $item->nhan_vien->dien_thoai }}</td>
+                                            <td class="" style="">{{ date('d/m/Y', strtotime($item->nhan_vien->ngay_sinh)) }}</td>
+                                            <td class="" style="">{{ $item->nhan_vien->gioi_tinh}}</td>
+                                            <td class="" style="">{{ $item->nhan_vien->dia_chi}}</td>
                                             <td class="" style="">
-                                                @if ($item->nhom_thuoc)
-                                                    {{ $item->nhom_thuoc->ten_nhom_thuoc }}
-                                                @else
-                                                    Không tồn tại
-                                                @endif
-                                            </td>
-                                            <td class="" style="">{{ $item->so_luong }}</td>
-                                            <td class="" style="">{{ $item->don_gia_nhap }}</td>
-                                            <td class="" style="">{{ $item->don_gia_ban }}</td>
-                                            <td class="" style="">{{ $item->ghi_chu }}</td>
-                                            <td class="center" style="text-align: center;">
-                                                <a class="btn btn-success btn-xs btn-edit"
-                                                    href="{{ route('admin.thuoc.getEdit', ['id' => $item->id]) }}"><i
+                                                <a class="btn btn-warning btn-xs"
+                                                    href="{{ route('admin.nhanvien.getEdit', ['id' => $item->id]) }}" ​><i
                                                         class="fa fa-edit"></i> Sửa</a>
                                                 <a class="btn btn-danger btn-xs"
-                                                    href="{{ route('admin.thuoc.getDelete', ['id' => $item->id]) }}"
-                                                    onclick="return ConfirmDelete()"><i class="fa fa-trash"></i> Xoá</a>
+                                                    href="{{ route('admin.nhanvien.getDelete', ['id' => $item->id]) }}" ​><i
+                                                        class="fa fa-edit"></i> Xoá</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -99,8 +93,4 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-@endsection
-
-@section('script')
-
 @endsection

@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 
 @section('head')
-    <title>Danh sách nhóm thuốc</title>
+    <title>Danh sách hoá đơn nhập</title>
 @endsection
 
 @section('content')
@@ -63,13 +63,13 @@
                                         <tr class="odd gradeX">
                                             <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
                                             </td>
-                                            <td class="" style="font-weight: 600; color: rgb(231, 38, 38)">
+                                            <td class="" style="font-weight: 600; color: rgb(231, 38, 38); text-align: center;">
                                                 {{ $item->id }}</td>
                                             <td class="" style="">{{ $item->nhan_vien->ho_ten }}</td>
                                             <td class="" style="">{{ date('d/m/Y', strtotime($item->ngay_lap)) }}</td>
                                             <td class="center" style="text-align: center;">
-                                                <a class="btn btn-primary btn-xs btn-edit" href="#"
-                                                    data-url=""
+                                                <a class="btn btn-primary btn-xs btn-view" href="#"
+                                                    data-url="{{ route('admin.hoadonnhap.getView', ['id' => $item->id]) }}"
                                                     ​><i class="fa fa-edit"></i> Xem chi tiết</a>
                                                 <a class="btn btn-success btn-xs"
                                                     href=""><i class="fa fa-trash"></i> In hoá đơn</a>
@@ -88,33 +88,61 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    @include('admin.NhomThuoc.modal_add')
-    @include('admin.NhomThuoc.modal_edit')
+    @include('admin.NhapThuoc.modal_view')
 
 @endsection
 
 @section('script')
-
     <script>
-        $('.btn-edit').click(function(e) {
+
+        $('.btn-view').click(function(e) {
             var url = $(this).attr('data-url');
-            $('#modal-edit').modal('show');
+            $('#modal-view').modal('show');
             e.preventDefault();
             $.ajax({
                 //phương thức get
                 type: 'get',
                 url: url,
                 success: function(response) {
-                    //đưa dữ liệu controller gửi về điền vào input trong form edit.
-                    $('#name-edit').val(response.data.ten_nhom_thuoc);
-                    $('#name-lsp').val(response.data.ten_nhom_thuoc);
-                    //thêm data-url chứa route sửa todo đã được chỉ định vào form sửa.
-                    $('#form-edit').attr('action', '{{ asset('admin/nhom-thuoc/sua/') }}/' +
-                        response.data
-                        .id)
+                    data = response.data
+                    $('.hoa_don_id').text(data.id);
+                    $('#ngay_lap').text(data.ngay_lap);
+                    $('#nhan_vien').text(data.nhan_vien.ho_ten);
+                    $('#table-body').html('');
+                    totalPrice = 0;
+                    data.chi_tiet_hdn.forEach((element, index) => {
+                        if (element.thuoc != null) {
+                            html = `
+                                <tr>
+                                    <td>${index+1}</td>
+                                    <td>${element.thuoc.ten_thuoc}</td>
+                                    <td>${element.so_luong}</td>
+                                    <td>${element.don_gia} VNĐ</td>
+                                    <td>${element.thanh_tien} VNĐ</td>
+                                </tr>
+                            `
+                        } else {
+                            html = `
+                                <tr>
+                                    <td>${index+1}</td>
+                                    <td>Thuốc đã bị xoá</td>
+                                    <td>${element.so_luong}</td>
+                                    <td>${element.don_gia} VNĐ</td>
+                                    <td>${element.thanh_tien} VNĐ</td>
+                                </tr>
+                            `
+                        }
+                        $('#table-body').append(html);
+                            totalPrice += element.thanh_tien
+                    });
+                    
+                    $('#tong_tien').text(totalPrice + ' VNĐ');
+                    
+                    
+                    
                 },
                 error: function(error) {
-
+                    alert("Lỗi lấy dữ liệu!")
                 }
             })
         })

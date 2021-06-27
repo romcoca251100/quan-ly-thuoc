@@ -68,11 +68,11 @@
                                 <a href="{{ route('admin.hoadonnhap.index') }}"><i class="fa fa-share-square-o fa-fw"></i> Quản lý nhập thuốc</a>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-group fa-fw"></i> Quản lý khách hàng</a>
+                                <a href="{{ route('admin.khachhang.index') }}"><i class="fa fa-group fa-fw"></i> Quản lý khách hàng</a>
                             </li>
                         @if (Auth::user()->role == 1)
                             <li>
-                                <a href=""><i class="fa fa-group fa-fw"></i> Quản lý nhân viên</a>
+                                <a href="{{ route('admin.nhanvien.index') }}"><i class="fa fa-group fa-fw"></i> Quản lý nhân viên</a>
                             </li>
                         @endif
                     </ul>

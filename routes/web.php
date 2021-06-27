@@ -16,25 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-})->name('index');
+//Page
+    //Public Routes
+Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/gioi-thieu', [PageController::class, 'getGioiThieu'])->name('index.getGioiThieu');
+Route::get('/lien-he', [PageController::class, 'getLienHe'])->name('index.getLienHe');
+Route::get('/dang-nhap', [PageController::class, 'getLogin'])->name('index.login');
 
-Route::get('/gioi-thieu', function () {
-    return view('pages.gioi-thieu');
-})->name('index.getGioiThieu');
+Route::get('/{slug}&id={id}', [PageController::class, 'getNhomThuoc'])->name('index.getNhomThuoc');
 
-Route::get('/lien-he', function () {
-    return view('pages.lien-he');
-})->name('index.getLienHe');
+Route::get('/thuoc', [PageController::class, 'getThuoc'])->name('index.getThuoc');
 
-Route::get('/dang-nhap', function () {
-    return view('pages.layouts.signin');
-})->name('login');
+Route::get('/{nhom_slug}&id={nhom_id}/{thuoc_slug}&id={thuoc_id}', [PageController::class, 'getThuocDetail'])->name('index.getThuocDetail');
 
-Route::get('dang-nhap', [AuthController::class, 'userLogin'])->name('index.login');
+// Route::get('dang-nhap', [AuthController::class, 'userLogin'])->name('');
+
+    //Protected Routes
+
+
+//Admin
+    //Public Routes
+
 Route::get('admin/dang-nhap', [AuthController::class, 'adminLogin'])->name('admin.login');
 Route::post('admin/dang-nhap', [AuthController::class, 'postAdminLogin'])->name('admin.postLogin');
+
+    //Protected Routes
 
 Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('admin.index');
@@ -68,11 +74,32 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
         Route::get('/them', [HoaDonNhapController::class, 'getAdd'])->name('admin.hoadonnhap.getAdd');
         Route::post('/them', [HoaDonNhapController::class, 'postAdd'])->name('admin.hoadonnhap.postAdd');
+
+        Route::get('/xem/{id}', [HoaDonNhapController::class, 'getView'])->name('admin.hoadonnhap.getView');
     });
 
     Route::prefix('ds-hoa-don-ban-thuoc')->group(function () {
         Route::get('/', [HoaDonXuatController::class, 'index'])->name('admin.hoadonxuat.index');
 
+    });
+
+    Route::prefix('quan-ly-khach-hang')->group(function () {
+        Route::get('/', [KhachHangController::class, 'index'])->name('admin.khachhang.index');
+
+    });
+
+    Route::prefix('quan-ly-nhan-vien')->middleware('admin.role')->group(function () {
+        Route::get('/', [NhanVienController::class, 'index'])->name('admin.nhanvien.index');
+
+        Route::get('/them', [NhanVienController::class, 'getAdd'])->name('admin.nhanvien.getAdd');
+        Route::post('/them', [NhanVienController::class, 'postAdd'])->name('admin.nhanvien.postAdd');
+
+        Route::get('/sua/{id}', [NhanVienController::class, 'getEdit'])->name('admin.nhanvien.getEdit');
+        Route::post('/sua/{id}', [NhanVienController::class, 'postEdit'])->name('admin.nhanvien.postEdit');
+
+        Route::get('/xoa/{id}', [NhanVienController::class, 'getDelete'])->name('admin.nhanvien.getDelete');
+
+        Route::get('/lay-lai-mat-khau/{id}', [NhanVienController::class, 'getChangePassword'])->name('admin.nhanvien.getChangePassword');
     });
 
 });

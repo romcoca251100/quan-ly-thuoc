@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\NhomThuoc;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,19 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->composer('pages.layouts.layout', function($view) {
+            $nhomthuoc = NhomThuoc::all();
+            $viewdata = [
+                'nhomthuoc' => $nhomthuoc,
+            ];
+            $view->with($viewdata);
+        });
+        view()->composer('pages.layouts.page', function($view) {
+            $nhomthuoc = NhomThuoc::all();
+            $viewdata = [
+                'nhomthuoc' => $nhomthuoc,
+            ];
+            $view->with($viewdata);
+        });
     }
 }

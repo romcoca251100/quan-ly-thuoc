@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+    @yield('head')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('upload/images/website/logo/logo.png') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('front-end/pages/css/style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-
+    @yield('style')
 </head>
 
 <body>
@@ -44,6 +45,17 @@
                             <a href="/"><img src="{{ asset('upload/images/website/logo/logo.png') }}"
                                     alt="Hiệu thuốc UTT" class="logo"><span id="webname">Hiệu thuốc UTT</span></a>
                         </div>
+                        <div class="banner float-right" style="text-align: right;">
+                            <a href=""><i class="fas fa-shopping-cart"></i> Giỏ hàng </a>
+                            |
+                            @if(Auth::check() && Auth::user()->role == 3)
+                            Xin chào <a href=""><i class="fas fa-user"></i> {{ Auth::user()->khach_hang->ho_ten }} </a> 
+                            |
+                            <a href=""><i class="fas fa-sign-out-alt"></i> Đăng xuất </a>
+                            @else
+                            <a href="{{ route('index.login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,7 +67,7 @@
                     <a href="/" class="nav-item">Trang chủ</a>
                     @if (isset($nhomthuoc))
                         @foreach ($nhomthuoc as $item)
-                            <a href="" class="nav-item">{{ $item->ten_nhom_thuoc }}</a>
+                            <a href="{{ route('index.getNhomThuoc', ['slug'=>$item->slug,'id' => $item->id]) }}" class="nav-item">{{ $item->ten_nhom_thuoc }}</a>
                         @endforeach
                     @endif
 

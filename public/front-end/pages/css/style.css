@@ -646,7 +646,7 @@ label {
     border-bottom: 1px solid #ccc;
 }
 
-.main-content .content-info-product .btn-buy {
+.btn-buy {
     display: inline-block;
     outline: none;
     border: none;
@@ -655,8 +655,12 @@ label {
     color: #fff;
 }
 
-.main-content .content-info-product .btn-buy:hover {
-    background-color: #eb6161;
+.btn-buy:hover {
+    background-color: #f75050;
+}
+
+.btn-buy a:hover {
+    text-decoration: none;
 }
 
 .main-content .title-detail,

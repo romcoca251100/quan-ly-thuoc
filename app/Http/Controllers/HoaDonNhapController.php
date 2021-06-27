@@ -82,4 +82,26 @@ class HoaDonNhapController extends Controller
         }
         return redirect()->back()->with('thongbao', 'Thêm mới thành công!');
     }
+
+    public function getView($id)
+    {
+        $hoadonnhap = HoaDonNhap::find($id);
+        $respone = array('data' => $hoadonnhap, );
+
+        $nhannhan = $hoadonnhap->nhan_vien;
+        $respone['data']['nhan_vien'] = $nhannhan;
+
+        foreach ($hoadonnhap->chi_tiet_hdn as $item) {
+            $respone['data']['chi_tiet_hdn'] = $item;
+            if($item->thuoc) {
+                foreach ($item->thuoc as $item2) {
+                }
+            } else {
+                $respone['data']['chi_tiet_hdn']['thuoc'] = "Không tồn tại";
+            }
+            
+        }
+        
+        return $respone;
+    }
 }

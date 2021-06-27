@@ -20,7 +20,7 @@ class NhomThuocController extends Controller
         $this->validate($request,[
             'ten_nhom_thuoc' => 'required|unique:nhom_thuocs,ten_nhom_thuoc',
         ], [
-            'ten_nhom_thuoc.required' => 'Bạn chưa nhập email',
+            'ten_nhom_thuoc.required' => 'Bạn chưa tên nhóm thuốc',
             'ten_nhom_thuoc.unique' => 'Trùng tên nhóm thuốc',
         ]);
         $nhomthuoc = new NhomThuoc;
@@ -40,7 +40,7 @@ class NhomThuocController extends Controller
         $this->validate($request,[
             'ten_nhom_thuoc' => 'required|unique:nhom_thuocs,ten_nhom_thuoc,'.$id,
         ], [
-            'ten_nhom_thuoc.required' => 'Bạn chưa nhập email',
+            'ten_nhom_thuoc.required' => 'Bạn chưa nhập tên nhóm thuốc',
             'ten_nhom_thuoc.unique' => 'Trùng tên nhóm thuốc',
         ]);
         $nhomthuoc->ten_nhom_thuoc = $request->ten_nhom_thuoc;

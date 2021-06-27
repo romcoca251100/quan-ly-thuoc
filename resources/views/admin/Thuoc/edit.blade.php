@@ -26,6 +26,14 @@
     @endif
     <div class="row">
         <div class="col-lg-12">
+            <p>
+                <a class="btn btn-primary" href="{{ route('admin.thuoc.index') }}"> <i class="fas fa-arrow-left"></i>
+                    Quay lại danh sách</a>
+            <p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Sửa thuốc

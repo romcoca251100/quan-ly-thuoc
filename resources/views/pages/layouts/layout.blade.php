@@ -51,7 +51,7 @@
                             @if(Auth::check() && Auth::user()->role == 3)
                             Xin chào <a href=""><i class="fas fa-user"></i> {{ Auth::user()->khach_hang->ho_ten }} </a> 
                             |
-                            <a href=""><i class="fas fa-sign-out-alt"></i> Đăng xuất </a>
+                            <a href="{{ route('index.userLogout') }}"><i class="fas fa-sign-out-alt"></i> Đăng xuất </a>
                             @else
                             <a href="{{ route('index.login') }}"><i class="fas fa-sign-in-alt"></i> Đăng nhập </a>
                             @endif

@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/gioi-thieu', [PageController::class, 'getGioiThieu'])->name('index.getGioiThieu');
 Route::get('/lien-he', [PageController::class, 'getLienHe'])->name('index.getLienHe');
-Route::get('/dang-nhap', [PageController::class, 'getLogin'])->name('index.login');
 
 Route::get('/{slug}&id={id}', [PageController::class, 'getNhomThuoc'])->name('index.getNhomThuoc');
 
@@ -29,10 +28,14 @@ Route::get('/thuoc', [PageController::class, 'getThuoc'])->name('index.getThuoc'
 
 Route::get('/{nhom_slug}&id={nhom_id}/{thuoc_slug}&id={thuoc_id}', [PageController::class, 'getThuocDetail'])->name('index.getThuocDetail');
 
-// Route::get('dang-nhap', [AuthController::class, 'userLogin'])->name('');
+Route::get('/dang-nhap', [PageController::class, 'getLogin'])->middleware('check.login')->name('index.login');
+Route::post('/dang-nhap', [AuthController::class, 'postUserLogin'])->middleware('check.login')->name('index.postUserLogin');
+Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->middleware('check.login')->name('index.postUserRegister');
 
     //Protected Routes
-
+Route::prefix('nguoi-dung')->group(function () {
+    Route::get('/dang-xuat', [AuthController::class, 'userLogout'])->name('index.userLogout');
+});
 
 //Admin
     //Public Routes

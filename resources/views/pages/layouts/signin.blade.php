@@ -15,13 +15,34 @@
 </style>
 @endsection
 @section('content-pra')
-
+@if ($errors->any())
+<div class="alert alert-danger">
+    @foreach ($errors->all() as $item)
+        {{$item}}
+        <br>
+    @endforeach
+</div>
+@endif
+@if (session('thongbao'))
+<div class="alert alert-danger">
+        {{session('thongbao')}}
+</div>
+@endif
+@if (session('thongbao2'))
+<div class="alert alert-success">
+    {{session('thongbao2')}}
+</div>
+@endif
     <div class="row">
+       
         <div class="col-6">
+           
             <h2 class="ml-3">Đăng nhập</h2>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form action="" method="POST" id="dang-nhap">
+                    <form action="{{ route('index.postUserLogin') }}" method="POST" id="dang-nhap">
+                        @csrf
+                        
                         <div class="form-group">
                             <label for="email">Tài khoản</label>
                             <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
@@ -46,7 +67,9 @@
             <h2 class="ml-3">Đăng Kí</h2>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form action="" method="POST" id="dang-ky">
+                    <form action="{{ route('index.postUserRegister') }}" method="POST" id="dang-ky">
+                        @csrf
+      
                         <div class="form-group">
                             <label for="ho_ten_dk">Họ tên <span style="color: red">*</span></label>
                             <input type="text" class="form-control" name="ho_ten" id="ho_ten_dk" 
@@ -71,13 +94,6 @@
                             <label for="ngay_sinh_dk">Ngày sinh <span style="color: red">*</span></label>
                             <input type="date" class="form-control" name="ngay_sinh" id="ngay_sinh_dk" 
                                 placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="gioi_tinh_dk">Giới tính <span style="color: red">*</span></label>
-                            <select class="form-control" name="gioi_tinh" id="gioi_tinh_dk">
-                                <option value="Nam">Nam</option>
-                                <option value="Nữ">Nữ</option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <label for="dia_chi_dk">Địa chỉ <span style="color: red">*</span></label>

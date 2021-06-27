@@ -50,11 +50,11 @@
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên thuốc</th>
+                                    <th>Hình ảnh</th>
                                     <th>Nhóm thuốc</th>
                                     <th>Số lượng</th>
                                     <th>Đơn giá nhập</th>
                                     <th>Đơn giá bán</th>
-                                    <th>Ghi chú</th>
                                     <th>Chức năng</th>
                             </thead>
                             <tbody>
@@ -67,6 +67,8 @@
                                             <td class="" style="font-weight: 600; color: rgb(231, 38, 38)">
                                                 {{ $item->ten_thuoc }}</td>
                                             <td class="" style="">
+                                                <img src="{{ asset($item->hinh_anh) }}" alt="" srcset="" width="220px" height="150px"></td>
+                                            <td class="" style="">
                                                 @if ($item->nhom_thuoc)
                                                     {{ $item->nhom_thuoc->ten_nhom_thuoc }}
                                                 @else
@@ -74,9 +76,8 @@
                                                 @endif
                                             </td>
                                             <td class="" style="">{{ $item->so_luong }}</td>
-                                            <td class="" style="">{{ $item->don_gia_nhap }}</td>
-                                            <td class="" style="">{{ $item->don_gia_ban }}</td>
-                                            <td class="" style="">{{ $item->ghi_chu }}</td>
+                                            <td class="" style="">{{ number_format($item->don_gia_nhap) }} VNĐ</td>
+                                            <td class="" style="">{{ number_format($item->don_gia_ban) }} VNĐ</td>
                                             <td class="center" style="text-align: center;">
                                                 <a class="btn btn-success btn-xs btn-edit"
                                                     href="{{ route('admin.thuoc.getEdit', ['id' => $item->id]) }}"><i

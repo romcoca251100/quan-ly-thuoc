@@ -78,6 +78,7 @@
         </div>
         <!-- Begin: Content -->
         <div id="content">
+            @yield('mapping-layout')
             @yield('content')
         </div>
         <!-- End: Content -->

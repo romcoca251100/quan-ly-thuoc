@@ -30,12 +30,12 @@ Route::get('/{nhom_slug}&id={nhom_id}/{thuoc_slug}&id={thuoc_id}', [PageControll
 
 Route::get('/gio-hang', [PageController::class, 'getCart'])->name('index.getCart');
 
-Route::get('/dang-nhap', [PageController::class, 'getLogin'])->middleware('check.login')->name('index.login');
-Route::post('/dang-nhap', [AuthController::class, 'postUserLogin'])->middleware('check.login')->name('index.postUserLogin');
-Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->middleware('check.login')->name('index.postUserRegister');
+Route::get('/dang-nhap', [PageController::class, 'getLogin'])->name('index.login');
+Route::post('/dang-nhap', [AuthController::class, 'postUserLogin'])->name('index.postUserLogin');
+Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->name('index.postUserRegister');
 
     //Protected Routes
-Route::prefix('nguoi-dung')->group(function () {
+Route::prefix('nguoi-dung')->middleware('user.login')->group(function () {
     Route::get('/thong-tin', [AuthController::class, 'getProfile'])->name('index.getProfile');
 
     Route::get('/dang-xuat', [AuthController::class, 'userLogout'])->name('index.userLogout');

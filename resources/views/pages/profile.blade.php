@@ -3,7 +3,13 @@
 @section('head')
     <title>{{ Auth::user()->khach_hang->ho_ten }}</title>
 @endsection
-
+@section('mapping-layout')
+    <div class="container">
+        <div class="mapping">
+            <span><a href="/" class="">Trang chủ</a></span> / <span><a href="{{ route('index.getProfile') }}" class="">Thông tin tài khoản</a></span>
+        </div>
+    </div>
+@endsection
 @section('content')
 <div class="container-fluid mb-5">
     <div class="row">

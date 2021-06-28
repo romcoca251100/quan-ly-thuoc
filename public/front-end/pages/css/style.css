@@ -394,6 +394,7 @@ label {
     line-height: 23px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .list-products li .title-product a,

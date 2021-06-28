@@ -18,8 +18,8 @@ class CreateHoaDonXuatsTable extends Migration
             $table->integer('nhan_vien_id')->nullable();
             $table->integer('khach_hang_id');
             $table->datetime('ngay_lap')->nullable();
-            $table->double('tong_tien');
-            $table->integer('status')->defaut(0);
+            $table->double('tong_tien')->nullable()->defaut(0);
+            $table->integer('status')->nullable()->defaut(0);
             $table->timestamps();
         });
     }

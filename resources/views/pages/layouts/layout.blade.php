@@ -26,7 +26,7 @@
                     </span>
                     <div class="search">
                         <div class="search-form">
-                            <form action="" method="GET">
+                            <form action="{{ route('index.getSearch') }}" method="GET">
                                 <label for="">
                                     <input type="search" name="input_search" id="noi-dung"
                                         placeholder="Tìm kiếm sản phẩm..." autocomplete="off">

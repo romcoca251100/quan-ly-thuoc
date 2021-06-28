@@ -28,6 +28,8 @@ Route::get('/thuoc', [PageController::class, 'getThuoc'])->name('index.getThuoc'
 
 Route::get('/{nhom_slug}&id={nhom_id}/{thuoc_slug}&id={thuoc_id}', [PageController::class, 'getThuocDetail'])->name('index.getThuocDetail');
 
+Route::get('/tim-kiem', [PageController::class, 'getSearch'])->name('index.getSearch');
+
 Route::get('/dang-nhap', [PageController::class, 'getLogin'])->name('index.login');
 Route::post('/dang-nhap', [AuthController::class, 'postUserLogin'])->name('index.postUserLogin');
 Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->name('index.postUserRegister');

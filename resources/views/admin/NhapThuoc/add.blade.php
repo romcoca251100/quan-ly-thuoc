@@ -116,17 +116,18 @@
     </script>
     <script>
         i = 2
+        temp = 0
         $('#them-san-pham').click(function() {
             html = `
             <hr>
             <hr>
             <div class="form-group">
-                <label for="nhom_thuoc_id" style="color: red">Nhập thuốc ${i}</label>
+                <label for="nhom_thuoc_id_${temp}" style="color: red">Nhập thuốc ${i}</label>
             </div>
             <div class="form-group">
-                                        <label for="nhom_thuoc_id">Nhóm thuốc</label>
+                                        <label for="nhom_thuoc_id_${temp}">Nhóm thuốc</label>
                                         <select class="form-control" style="width: 30%" name="nhom_thuoc_id[]"
-                                            id="nhom_thuoc_id">
+                                            id="nhom_thuoc_id_${temp}">
                                             <option value="" disabled selected>--- Nhóm thuốc ---</option>
                                             @if (isset($nhomthuoc))
                                                 @foreach ($nhomthuoc as $item)
@@ -137,36 +138,37 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ten_thuoc">Tên thuốc</label>
-                                        <input class="form-control" id="ten_thuoc" name="ten_thuoc[]"
+                                        <label for="ten_thuoc_${temp}">Tên thuốc</label>
+                                        <input class="form-control" id="ten_thuoc_${temp}" name="ten_thuoc[]"
                                             placeholder="Nhập tên thuốc...">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="so_luong">Số lượng</label>
-                                        <input type="number" style="width: 30%" class="form-control" id="so_luong" name="so_luong[]"
+                                        <label for="so_luong_${temp}">Số lượng</label>
+                                        <input type="number" style="width: 30%" class="form-control" id="so_luong_${temp}" name="so_luong[]"
                                             placeholder="Nhập giá sản phẩm" value="0">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="don_gia_nhap">Đơn giá nhập (VNĐ)</label>
-                                        <input type="number" style="width: 30%" class="form-control" id="don_gia_nhap" name="don_gia_nhap[]"
+                                        <label for="don_gia_nhap_${temp}">Đơn giá nhập (VNĐ)</label>
+                                        <input type="number" style="width: 30%" class="form-control" id="don_gia_nhap_${temp}" name="don_gia_nhap[]"
                                             placeholder="Nhập giá sản phẩm" value="0">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="don_gia_ban">Đơn giá bán (VNĐ)</label>
-                                        <input type="number" style="width: 30%" class="form-control" id="don_gia_ban" name="don_gia_ban[]"
+                                        <label for="don_gia_ban_${temp}">Đơn giá bán (VNĐ)</label>
+                                        <input type="number" style="width: 30%" class="form-control" id="don_gia_ban_${temp}" name="don_gia_ban[]"
                                             placeholder="Nhập giá sản phẩm" value="0">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="ghi_chu">Ghi chú</label>
-                                        <textarea class="form-control" id="ghi_chu" name="ghi_chu[]" placeholder=""
+                                        <label for="ghi_chu_${temp}">Ghi chú</label>
+                                        <textarea class="form-control" id="ghi_chu_${temp}" name="ghi_chu[]" placeholder=""
                                             rows="5"></textarea>
                                     </div>`
             $('#them-thuoc').append(html)
             i++
+            temp++
         })
         $('#nhap-lai').click(function() {
             html = `

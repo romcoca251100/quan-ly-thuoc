@@ -17,7 +17,7 @@ class PaymentMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()) {
+        if(Auth::check() && Auth::user()->role == 3) {
             if(\Session::has('Cart')) {
                 return $next($request);
             } else {

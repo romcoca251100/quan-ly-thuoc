@@ -52,7 +52,7 @@
                                     <?php $i = 1;
                                    ?>
                                     @foreach ($hoadonxuat as $item)
-                                        @if ($item->khach_hang)
+                                        @if (isset($item->khach_hang))
                                             <tr class="odd gradeX">
                                                 <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
                                                 </td>

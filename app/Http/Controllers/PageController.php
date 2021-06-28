@@ -112,11 +112,18 @@ class PageController extends Controller
     }
 
     public function getSearch(Request $request) {
-        $thuoc = Thuoc::where('ten_thuoc', 'like', '%'.$request->input_search.'%')->get();
-        if(!$thuoc) {
-            $nhom_thuoc = NhomThuoc::where('ten_nhom_thuoc', 'like', '%'.$request->input_search.'%')->get();
-            $thuoc = Thuoc::where('nhom_thuoc_id', '=', $nhom_thuoc[0]->id)->get();
-        };
+
+        $nhom_thuoc = NhomThuoc::where('ten_nhom_thuoc', 'like', '%'.$request->input_search.'%')->first();
+        
+            if($nhom_thuoc) {
+                $thuoc = Thuoc::where('nhom_thuoc_id', '=', $nhom_thuoc->id)->get();
+            } else {
+                $thuoc = Thuoc::where('ten_thuoc', 'like', '%'.$request->input_search.'%')->get();
+            }
+
+        // if($thuoc->isEmpty()) {
+            
+        // };
         $viewData = [
             'thuoc' => $thuoc,
         ];

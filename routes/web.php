@@ -131,4 +131,9 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
         Route::get('/lay-lai-mat-khau/{id}', [NhanVienController::class, 'getChangePassword'])->name('admin.nhanvien.getChangePassword');
     });
 
+    Route::prefix('thong-ke')->group(function () {
+        Route::get('/', [ThongKeController::class, 'index'])->name('admin.thongke.index');
+
+    });
+
 });

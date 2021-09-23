@@ -55,27 +55,31 @@
                         <div class="card">
                             <h5 class="card-header">Thông tin tài khoản</h5>
                             <div class="card-body">
-                                <h5 class="card-title">Họ và tên: </h5>
-                                <span class="card-text">{{ Auth::user()->khach_hang->ho_ten }}
-                                </span>
-                                <hr>
-                                <h5 class="card-title">Email: </h5>
-                                <span class="card-text">{{ Auth::user()->email }}
-                                </span>
-                                <hr>
-                                <h5 class="card-title">Số điện thoại: </h5>
-                                <span class="card-text">{{ Auth::user()->khach_hang->dien_thoai }}
-                                </span>
-                                <hr>
-                                <h5 class="card-title">Ngày sinh: </h5>
-                                <span
-                                    class="card-text">{{ date('d-m-Y', strtotime(Auth::user()->khach_hang->ngay_sinh)) }}
-                                </span>
-                                <hr>
-                                <h5 class="card-title">Địa chỉ: </h5>
-                                <span class="card-text">{{ Auth::user()->khach_hang->dia_chi }}
-                                </span>
-                                <hr>
+
+                                <form>
+                                    <div class="mb-3">
+                                      <label for="name" class="form-label"><b>Họ và tên:</b></label>
+                                      <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->khach_hang->ho_ten }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label"><b>Email:</b></label>
+                                        <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" disabled> 
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="sdt" class="form-label"><b>Số điện thoại:</b></label>
+                                        <input type="text" class="form-control" id="sdt" name="sdt" value="{{ Auth::user()->khach_hang->dien_thoai }}">
+                                    </div>
+                                    <div class="mb-3"  style="width: 40%">
+                                        <label for="ngay_sinh" class="form-label"><b>Ngày sinh:</b></label>
+                                        <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh" value="{{ Auth::user()->khach_hang->ngay_sinh }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="dia_chi" class="form-label"><b>Địa chỉ:</b></label>
+                                        <input type="text" class="form-control" id="dia_chi" name="dia_chi" value="{{ Auth::user()->khach_hang->dia_chi }}">
+                                      </div>
+ 
+                                    <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+                                  </form>
                             </div>
                         </div>
                     </div>
@@ -100,7 +104,7 @@
                                                 <tr>
                                                     <th scope="row">{{ $i++ }}</th>
                                                     <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
-                                                    <td>{{ $item->tong_tien }}</td>
+                                                    <td>{{ number_format($item->tong_tien) }} VNĐ</td>
                                                     <td>
                                                         @if ($item->status == 1)
                                                             Đã xác nhận

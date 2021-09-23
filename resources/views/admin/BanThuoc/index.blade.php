@@ -60,8 +60,15 @@
                                                 <td>{{ $item->khach_hang->ho_ten }}</td>
                                                 <td>{{ $item->tong_tien }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
-                                                <td>Trạng thái</td>
-                                                <td>In hoá đơn</td>
+                                                <td>Chưa xác nhận | <a class="btn btn-success btn-xs"
+                                                    href=""><i class="fa fa-trash"></i> Xác nhận</a></td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-xs btn-view" href="#"
+                                                    data-url=""
+                                                    ​><i class="fa fa-edit"></i> Xem chi tiết</a>
+                                                    <a class="btn btn-success btn-xs"
+                                                    href=""><i class="fa fa-trash"></i> In hoá đơn</a>
+                                                </td>
                                             </>
                                         @endif
                                     @endforeach

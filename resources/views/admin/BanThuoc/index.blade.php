@@ -77,7 +77,8 @@
                                                         <b style="color: red;">ĐƠN HÀNG ĐÃ BỊ HUỶ</b>
                                                     @elseif($item->status == -2)
                                                         <b style="color: red;">GIAO HÀNG KHÔNG THÀNH CÔNG</b> | <a class="btn btn-success btn-xs"
-                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao lại</a>
+                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao lại</a> | <a class="btn btn-danger btn-xs"
+                                                        href="{{route('admin.hoadonxuat.cancelOrder', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Huỷ</a>
                                                     @endif
                                                 </td>
                                                 <td>

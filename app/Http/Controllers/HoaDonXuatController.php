@@ -20,21 +20,21 @@ class HoaDonXuatController extends Controller
         $hoadonxuat = HoaDonXuat::find($id);
         $hoadonxuat->status = 1;
         $hoadonxuat->update();
-        return redirect()->back()->with('thongbao', 'Xác nhận đơn hàng '.$hoadonxuat->id.' thành công!');
+        return redirect()->back()->with('thongbao', 'Xác nhận đơn hàng DH'.$hoadonxuat->id.' thành công!');
     }
 
     public function startShip($id) {
         $hoadonxuat = HoaDonXuat::find($id);
         $hoadonxuat->status = 2;
         $hoadonxuat->update();
-        return redirect()->back()->with('thongbao', 'Đơn hàng '.$hoadonxuat->id.' đã bắt đầu được giao!');
+        return redirect()->back()->with('thongbao', 'Đơn hàng DH'.$hoadonxuat->id.' đã bắt đầu được giao!');
     }
 
     public function acceptPayment($id) {
         $hoadonxuat = HoaDonXuat::find($id);
         $hoadonxuat->status = 3;
         $hoadonxuat->update();
-        return redirect()->back()->with('thongbao', 'Đơn hàng '.$hoadonxuat->id.' đã được thanh toán!');
+        return redirect()->back()->with('thongbao', 'Đơn hàng DH'.$hoadonxuat->id.' đã được thanh toán!');
     }
 
     public function cancelOrder($id) {
@@ -42,7 +42,11 @@ class HoaDonXuatController extends Controller
         if($hoadonxuat->status == 0 && $hoadonxuat->khach_hang_id == \Auth::user()->khach_hang->id ) {
             $hoadonxuat->status = -1;
             $hoadonxuat->update();
-            return redirect()->back()->with('thongbao', 'Đơn hàng '.$hoadonxuat->id.' đã được huỷ!');
+            return redirect()->back()->with('thongbao', 'Đơn hàng DH'.$hoadonxuat->id.' đã được huỷ!');
+        } else if($hoadonxuat->status == -2) {
+            $hoadonxuat->status = -1;
+            $hoadonxuat->update();
+            return redirect()->back()->with('thongbao', 'Đơn hàng DH'.$hoadonxuat->id.' đã được huỷ!');
         }
 
         return redirect()->back()->with('loi', 'Lỗi huỷ đơn hàng!');
@@ -52,7 +56,7 @@ class HoaDonXuatController extends Controller
         $hoadonxuat = HoaDonXuat::find($id);
         $hoadonxuat->status = -2;
         $hoadonxuat->update();
-        return redirect()->back()->with('thongbao', 'Đơn hàng '.$hoadonxuat->id.' giao hàng không thành công, chờ giao lại!');
+        return redirect()->back()->with('thongbao', 'Đơn hàng DH'.$hoadonxuat->id.' giao hàng không thành công, chờ giao lại!');
     }
 
     public function getView($id)

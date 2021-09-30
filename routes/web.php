@@ -120,6 +120,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
         Route::get('/bat-dau-giao-hang/{id}', [HoaDonXuatController::class, 'startShip'])->name('admin.hoadonxuat.startShip');
         Route::get('/huy-giao-hang/{id}', [HoaDonXuatController::class, 'cancelShip'])->name('admin.hoadonxuat.cancelShip');
+        Route::get('/huy-don-hang/{id}', [HoaDonXuatController::class, 'cancelOrder'])->name('admin.hoadonxuat.cancelOrder');
 
         Route::get('/xac-nhan-thanh-toan/{id}', [HoaDonXuatController::class, 'acceptPayment'])->name('admin.hoadonxuat.acceptPayment');
 

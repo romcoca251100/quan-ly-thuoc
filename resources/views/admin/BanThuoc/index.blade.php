@@ -59,7 +59,7 @@
                                                 <td style="text-align: center; color: red"> <b> DH{{ $item->id }}</b></td>
                                                 <td>{{ $item->khach_hang->ho_ten }}</td>
                                                 <td>{{ number_format($item->tong_tien) }} VNĐ</td>
-                                                <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
+                                                <td>{{ date('d-m-Y H:m:s', strtotime($item->ngay_lap)) }}</td>
                                                 <td>
                                                     @if ($item->status == 0)
                                                         Chưa xác nhận | <a class="btn btn-success btn-xs"
@@ -104,8 +104,6 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    @include('admin.NhomThuoc.modal_add')
-    @include('admin.NhomThuoc.modal_edit')
     @include('admin.BanThuoc.modal_view')
 
 @endsection
@@ -113,29 +111,6 @@
 @section('script')
 
     <script>
-        $('.btn-edit').click(function(e) {
-            var url = $(this).attr('data-url');
-            $('#modal-edit').modal('show');
-            e.preventDefault();
-            $.ajax({
-                //phương thức get
-                type: 'get',
-                url: url,
-                success: function(response) {
-                    //đưa dữ liệu controller gửi về điền vào input trong form edit.
-                    $('#name-edit').val(response.data.ten_nhom_thuoc);
-                    $('#name-lsp').val(response.data.ten_nhom_thuoc);
-                    //thêm data-url chứa route sửa todo đã được chỉ định vào form sửa.
-                    $('#form-edit').attr('action', '{{ asset('admin/nhom-thuoc/sua/') }}/' +
-                        response.data
-                        .id)
-                },
-                error: function(error) {
-
-                }
-            })
-        })
-
         $('.btn-view').click(function(e) {
             var url = $(this).attr('data-url');
             $('#modal-view').modal('show');

@@ -37,6 +37,10 @@ Route::post('/dang-ky', [AuthController::class, 'postUserRegister'])->name('inde
     //Protected Routes
 Route::prefix('nguoi-dung')->middleware('user.login')->group(function () {
     Route::get('/thong-tin', [AuthController::class, 'getProfile'])->name('index.getProfile');
+    Route::post('/thong-tin', [AuthController::class, 'editProfile'])->name('index.editProfile');
+
+            
+    Route::get('/huy-don-hang/{id}', [HoaDonXuatController::class, 'cancelOrder'])->name('admin.hoadonxuat.cancelOrder');
 
     Route::post('/doi-mat-khau', [AuthController::class, 'postUserPassword'])->name('index.postUserPassword');
 
@@ -75,6 +79,8 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('admin.index');
     Route::get('/dang-xuat', [AuthController::class, 'adminLogout'])->name('admin.logout');
 
+    Route::get('/thong-tin-nhan-vien', [AuthController::class, 'adminProfile'])->name('admin.profile');
+
     Route::prefix('nhom-thuoc')->group(function () {
         Route::get('/', [NhomThuocController::class, 'index'])->name('admin.nhomthuoc.index');
 
@@ -110,6 +116,15 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
     Route::prefix('ds-hoa-don-ban-thuoc')->group(function () {
         Route::get('/', [HoaDonXuatController::class, 'index'])->name('admin.hoadonxuat.index');
 
+        Route::get('/xac-nhan-don-hang/{id}', [HoaDonXuatController::class, 'acceptOrder'])->name('admin.hoadonxuat.acceptOrder');
+
+        Route::get('/bat-dau-giao-hang/{id}', [HoaDonXuatController::class, 'startShip'])->name('admin.hoadonxuat.startShip');
+        Route::get('/huy-giao-hang/{id}', [HoaDonXuatController::class, 'cancelShip'])->name('admin.hoadonxuat.cancelShip');
+
+        Route::get('/xac-nhan-thanh-toan/{id}', [HoaDonXuatController::class, 'acceptPayment'])->name('admin.hoadonxuat.acceptPayment');
+
+        Route::get('/xem/{id}', [HoaDonXuatController::class, 'getView'])->name('admin.hoadonxuat.getView');
+        
     });
 
     Route::prefix('quan-ly-khach-hang')->group(function () {

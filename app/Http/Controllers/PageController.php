@@ -87,6 +87,7 @@ class PageController extends Controller
         $cart = \Session::get('Cart');
 
         $hdx = new HoaDonXuat;
+        $hdx->ngay_lap = \Carbon\Carbon::now();
         $hdx->khach_hang_id = $kh->id;
         $hdx->tong_tien = $cart->tongGia;
         $hdx->save();

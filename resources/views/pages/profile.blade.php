@@ -56,7 +56,8 @@
                             <h5 class="card-header">Thông tin tài khoản</h5>
                             <div class="card-body">
 
-                                <form>
+                                <form action="{{route('index.editProfile')}}" method="post">
+                                    @csrf
                                     <div class="mb-3">
                                       <label for="name" class="form-label"><b>Họ và tên:</b></label>
                                       <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->khach_hang->ho_ten }}">
@@ -91,9 +92,11 @@
                                     <thead class="bg-success">
                                         <tr>
                                             <th scope="col">STT</th>
+                                            <th scope="col">Mã đơn</th>
                                             <th scope="col">Ngày đặt</th>
                                             <th scope="col">Tổng tiền</th>
                                             <th scope="col">Trạng thái đơn hàng</th>
+                                            <th scope="col">Tác vụ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,15 +106,29 @@
                                             @foreach ($hdx as $item)
                                                 <tr>
                                                     <th scope="row">{{ $i++ }}</th>
-                                                    <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
+                                                    <th scope="row">DH{{ $item->id }}</th>
+                                                    <td>{{ date('d-m-Y H:m:s', strtotime($item->ngay_lap)) }}</td>
                                                     <td>{{ number_format($item->tong_tien) }} VNĐ</td>
                                                     <td>
                                                         @if ($item->status == 1)
-                                                            Đã xác nhận
+                                                            <i style="color: green;">Đã xác nhận</i>
                                                         @elseif ($item->status == 2)
-                                                            Đã thanh toán
+                                                            <i style="color: blue;">Đang giao hàng</i>                                                
+                                                        @elseif ($item->status == 3)
+                                                            <b><i style="color: green;">Đã thanh toán</i></b> 
+                                                        @elseif ($item->status == -1)
+                                                            <b><i style="color: red;">Đơn hàng đã bị huỷ</i></b>
+                                                        @elseif ($item->status == -2)
+                                                            <b><i style="color: red;">Giao hàng không thành công</i></b>                                
                                                         @else
-                                                            Chờ xác nhận
+                                                            <b><i>Chờ xác nhận</i></b>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($item->status == 0)
+                                                            <a href="{{route('admin.hoadonxuat.cancelOrder', ['id' => $item->id])}}" class="btn btn-danger btn-xs">Huỷ đơn hàng</a>
+                                                        @else
+                                                            <button class="btn btn-danger btn-xs" disabled>Không thể huỷ đơn hàng</button>
                                                         @endif
                                                     </td>
                                                 </tr>

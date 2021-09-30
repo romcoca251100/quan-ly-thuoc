@@ -56,18 +56,38 @@
                                             <tr class="odd gradeX">
                                                 <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
                                                 </td>
-                                                <td style="text-align: center; color: red"> <b> {{ $item->id }}</b></td>
+                                                <td style="text-align: center; color: red"> <b> DH{{ $item->id }}</b></td>
                                                 <td>{{ $item->khach_hang->ho_ten }}</td>
-                                                <td>{{ $item->tong_tien }}</td>
+                                                <td>{{ number_format($item->tong_tien) }} VNĐ</td>
                                                 <td>{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
-                                                <td>Chưa xác nhận | <a class="btn btn-success btn-xs"
-                                                    href=""><i class="fa fa-trash"></i> Xác nhận</a></td>
+                                                <td>
+                                                    @if ($item->status == 0)
+                                                        Chưa xác nhận | <a class="btn btn-success btn-xs"
+                                                        href="{{route('admin.hoadonxuat.acceptOrder', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Xác nhận</a>
+                                                    @elseif($item->status == 1)
+                                                        Đã xác nhận | <a class="btn btn-success btn-xs"
+                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Bắt đầu giao hàng</a>
+                                                    @elseif($item->status == 2)
+                                                        Đã giao hàng | 
+                                                        <a class="btn btn-danger btn-xs" href="{{route('admin.hoadonxuat.cancelShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao hàng không thành công</a> | 
+                                                        <a class="btn btn-success btn-xs" href="{{route('admin.hoadonxuat.acceptPayment', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Xác nhận thanh toán</a>
+                                                    @elseif($item->status == 3)
+                                                        <b style="color: green;">ĐÃ THANH TOÁN</b>
+                                                    @elseif($item->status == -1)
+                                                        <b style="color: red;">ĐƠN HÀNG ĐÃ BỊ HUỶ</b>
+                                                    @elseif($item->status == -2)
+                                                        <b style="color: red;">GIAO HÀNG KHÔNG THÀNH CÔNG</b> | <a class="btn btn-success btn-xs"
+                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao lại</a>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-primary btn-xs btn-view" href="#"
-                                                    data-url=""
+                                                    data-url="{{ route('admin.hoadonxuat.getView', ['id' => $item->id]) }}"
                                                     ​><i class="fa fa-edit"></i> Xem chi tiết</a>
-                                                    <a class="btn btn-success btn-xs"
-                                                    href=""><i class="fa fa-trash"></i> In hoá đơn</a>
+                                                    @if($item->status != -1)
+                                                        <a class="btn btn-success btn-xs"
+                                                        href=""><i class="fa fa-trash"></i> In hoá đơn</a>
+                                                    @endif
                                                 </td>
                                             </>
                                         @endif
@@ -86,6 +106,7 @@
     </div>
     @include('admin.NhomThuoc.modal_add')
     @include('admin.NhomThuoc.modal_edit')
+    @include('admin.BanThuoc.modal_view')
 
 @endsection
 
@@ -111,6 +132,58 @@
                 },
                 error: function(error) {
 
+                }
+            })
+        })
+
+        $('.btn-view').click(function(e) {
+            var url = $(this).attr('data-url');
+            $('#modal-view').modal('show');
+            e.preventDefault();
+            $.ajax({
+                //phương thức get
+                type: 'get',
+                url: url,
+                success: function(response) {
+                    data = response.data
+                    $('.hoa_don_id').text(data.id);
+                    $('#ngay_dat').text(data.ngay_lap);
+                    $('#khach_hang').text(data.khach_hang.ho_ten);
+                    $('#table-body').html('');
+                    totalPrice = 0;
+                    data.chi_tiet_hdx.forEach((element, index) => {
+                        if (element.thuoc != null) {
+                            html = `
+                                <tr>
+                                    <td>${index+1}</td>
+                                    <td>${element.thuoc.ten_thuoc}</td>
+                                    <td>${element.so_luong}</td>
+                                    <td>${element.don_gia} VNĐ</td>
+                                    <td>${element.thanh_tien} VNĐ</td>
+                                </tr>
+                            `
+                        } else {
+                            html = `
+                                <tr>
+                                    <td>${index+1}</td>
+                                    <td>Thuốc đã bị xoá</td>
+                                    <td>${element.so_luong}</td>
+                                    <td>${element.don_gia} VNĐ</td>
+                                    <td>${element.thanh_tien} VNĐ</td>
+                                </tr>
+                            `
+                        }
+                        $('#table-body').append(html);
+                            totalPrice += element.thanh_tien
+                    });
+                    
+                    $('#tong_tien').text(totalPrice + ' VNĐ');
+                    
+                    
+                    
+                },
+                error: function(error) {
+                    alert("Lỗi lấy dữ liệu!")
                 }
             })
         })

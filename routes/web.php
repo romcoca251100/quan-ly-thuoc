@@ -39,7 +39,6 @@ Route::prefix('nguoi-dung')->middleware('user.login')->group(function () {
     Route::get('/thong-tin', [AuthController::class, 'getProfile'])->name('index.getProfile');
     Route::post('/thong-tin', [AuthController::class, 'editProfile'])->name('index.editProfile');
 
-            
     Route::get('/huy-don-hang/{id}', [HoaDonXuatController::class, 'cancelOrder'])->name('admin.hoadonxuat.cancelOrder');
 
     Route::post('/doi-mat-khau', [AuthController::class, 'postUserPassword'])->name('index.postUserPassword');
@@ -111,6 +110,7 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
         Route::post('/them', [HoaDonNhapController::class, 'postAdd'])->name('admin.hoadonnhap.postAdd');
 
         Route::get('/xem/{id}', [HoaDonNhapController::class, 'getView'])->name('admin.hoadonnhap.getView');
+        Route::get('/in/{id}', [HoaDonNhapController::class, 'print'])->name('admin.hoadonnhap.print');
     });
 
     Route::prefix('ds-hoa-don-ban-thuoc')->group(function () {
@@ -120,12 +120,13 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
         Route::get('/bat-dau-giao-hang/{id}', [HoaDonXuatController::class, 'startShip'])->name('admin.hoadonxuat.startShip');
         Route::get('/huy-giao-hang/{id}', [HoaDonXuatController::class, 'cancelShip'])->name('admin.hoadonxuat.cancelShip');
-        Route::get('/huy-don-hang/{id}', [HoaDonXuatController::class, 'cancelOrder'])->name('admin.hoadonxuat.cancelOrder');
+
+        Route::get('/huy-don-hang/{id}', [HoaDonXuatController::class, 'cancelOrder'])->name('admin.hoadonxuat.AdmincancelOrder');
 
         Route::get('/xac-nhan-thanh-toan/{id}', [HoaDonXuatController::class, 'acceptPayment'])->name('admin.hoadonxuat.acceptPayment');
 
         Route::get('/xem/{id}', [HoaDonXuatController::class, 'getView'])->name('admin.hoadonxuat.getView');
-        
+        Route::get('/in/{id}', [HoaDonXuatController::class, 'print'])->name('admin.hoadonxuat.print');
     });
 
     Route::prefix('quan-ly-khach-hang')->group(function () {
@@ -149,6 +150,14 @@ Route::prefix('admin')->middleware('admin.login')->group(function () {
 
     Route::prefix('thong-ke')->group(function () {
         Route::get('/', [ThongKeController::class, 'index'])->name('admin.thongke.index');
+
+        
+        Route::get('bieu-do', [ThongKeController::class, 'loadChart'])->name('admin.thongke.loadChart');
+
+        Route::get('bieu-do-2', [ThongKeController::class, 'loadChart2'])->name('admin.thongke.loadChart2');
+
+        Route::get('bieu-do-3', [ThongKeController::class, 'loadChart3'])->name('admin.thongke.loadChart3');
+
 
     });
 

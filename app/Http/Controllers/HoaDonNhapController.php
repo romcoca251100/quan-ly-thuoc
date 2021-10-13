@@ -9,6 +9,7 @@ use App\Models\ChiTietHoaDonNhap;
 use App\Models\NhomThuoc;
 use App\Models\Thuoc;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class HoaDonNhapController extends Controller
 {
@@ -94,8 +95,7 @@ class HoaDonNhapController extends Controller
         foreach ($hoadonnhap->chi_tiet_hdn as $item) {
             $respone['data']['chi_tiet_hdn'] = $item;
             if($item->thuoc) {
-                foreach ($item->thuoc as $item2) {
-                }
+                foreach ($item->thuoc as $item2) {}
             } else {
                 $respone['data']['chi_tiet_hdn']['thuoc'] = "Không tồn tại";
             }
@@ -104,4 +104,19 @@ class HoaDonNhapController extends Controller
         
         return $respone;
     }
+
+    public function print($id)
+    {
+        $hdn = HoaDonNhap::find($id);
+        $cthdn = ChiTietHoaDonNhap::where('hoa_don_nhap_id', $id)->get();
+        $tong_tien = 0;
+        foreach($cthdn as $item) {
+            $tong_tien += $item->thanh_tien;
+        }
+        $pdf = PDF::loadView('admin.NhapThuoc.print', compact('hdn', 'cthdn', 'tong_tien'));
+
+        $title = 'HDN'.$id.'-ngay-nhap-'.$hdn->ngay_lap.'.pdf';
+		return $pdf->stream($title);
+    }
+
 }

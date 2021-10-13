@@ -48,31 +48,30 @@
                         <table class="table table-striped table-bordered table-hover" id="table-admin">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
-                                    <th>Mã hoá đơn</th>
-                                    <th>Người lập</th>
-                                    <th>Ngày lập</th>
-                                    <th>Chức năng</th>
+                                    <th style="text-align: center;">STT</th>
+                                    <th style="text-align: center;">Mã hoá đơn</th>
+                                    <th style="text-align: center;">Người lập</th>
+                                    <th style="text-align: center;">Ngày lập</th>
+                                    <th style="text-align: center;">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (isset($hoadonnhap))
-                                    @php $i = 1
-                                    @endphp
+                                    <?php $i = 1; ?>
                                     @foreach ($hoadonnhap as $item)
                                         <tr class="odd gradeX">
                                             <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
                                             </td>
                                             <td class="" style="font-weight: 600; color: rgb(231, 38, 38); text-align: center;">
-                                                {{ $item->id }}</td>
-                                            <td class="" style="">{{ $item->nhan_vien->ho_ten }}</td>
-                                            <td class="" style="">{{ date('d/m/Y', strtotime($item->ngay_lap)) }}</td>
+                                                HDN{{ $item->id }}</td>
+                                            <td class="" style="text-align: center;">{{ $item->nhan_vien->ho_ten }}</td>
+                                            <td class="" style="text-align: center;">{{ date('d/m/Y', strtotime($item->ngay_lap)) }}</td>
                                             <td class="center" style="text-align: center;">
                                                 <a class="btn btn-primary btn-xs btn-view" href="#"
                                                     data-url="{{ route('admin.hoadonnhap.getView', ['id' => $item->id]) }}"
                                                     ​><i class="fa fa-edit"></i> Xem chi tiết</a>
                                                 <a class="btn btn-success btn-xs"
-                                                    href=""><i class="fa fa-trash"></i> In hoá đơn</a>
+                                                    href="{{ route('admin.hoadonnhap.print', ['id' => $item->id]) }}"><i class="fa fa-trash"></i> In hoá đơn</a>
                                             </td>
                                         </tr>
                                     @endforeach

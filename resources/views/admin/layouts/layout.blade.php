@@ -102,7 +102,7 @@
     <script src="{{ asset('front-end/admin/js/dataTables/dataTables.bootstrap.min.js') }}"></script>
 
     <script src="{{ asset('front-end/admin/js/startmin.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
 
     <script>
@@ -135,6 +135,40 @@
             $(".alert").slideUp(800);
         });
     </script>
+
+
+<script>
+    
+    const loadChart = () => {
+        let url = 'admin/thong-ke/bieu-do'
+        console.log(url);
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            success: function (response) {
+                showChart(response.times, response.values);
+            },
+        })
+    }
+    loadChart()
+
+    const loadChart2 = () => {
+        let url = 'admin/thong-ke/bieu-do-2'
+        console.log(url);
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            success: function (response) {
+                showChart2(response.times, response.values);
+            },
+        })
+        
+    }
+    loadChart2()
+</script>
+
     @yield('script')
 </body>
 

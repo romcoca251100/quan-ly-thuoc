@@ -35,7 +35,38 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     
-                    <!-- /.table-responsive -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> Thống kê tổng tiền hoá đơn xuất theo ngày</b>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="chartWrapper">
+                                        <div class="chartAreaWrapper">
+                                            <canvas id="myChart"></canvas>
+                                            <script src="{{asset('front-end/admin/js/chart.js')}}"></script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> Thống kê số lượng sản phẩm theo Loại sản phẩm</b>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="chartWrapper">
+                                        <div class="chartAreaWrapper">
+                                            <canvas id="myChart2"></canvas>
+                                            <script src="{{asset('front-end/admin/js/chart.js')}}"></script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.panel-body -->
             </div>

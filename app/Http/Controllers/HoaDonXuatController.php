@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HoaDonXuat;
+use App\Models\ChiTietHoaDonXuat;
+use PDF;
 class HoaDonXuatController extends Controller
 {
     //
@@ -77,5 +79,16 @@ class HoaDonXuatController extends Controller
             }
         }
         return $respone;
+    }
+
+    public function print($id)
+    {
+        $hdx = HoaDonXuat::find($id);
+        $cthdx = ChiTietHoaDonXuat::where('hoa_don_xuat_id', $id)->get();
+
+        $pdf = PDF::loadView('admin.BanThuoc.print', compact('hdx', 'cthdx'));
+
+        $title = 'HDX'.$id.'-ngay-xuat-'.$hdx->ngay_lap.'.pdf';
+		return $pdf->stream($title);
     }
 }

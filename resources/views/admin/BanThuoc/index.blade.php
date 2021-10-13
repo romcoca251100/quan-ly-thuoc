@@ -78,17 +78,15 @@
                                                     @elseif($item->status == -2)
                                                         <b style="color: red;">GIAO HÀNG KHÔNG THÀNH CÔNG</b> | <a class="btn btn-success btn-xs"
                                                         href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao lại</a> | <a class="btn btn-danger btn-xs"
-                                                        href="{{route('admin.hoadonxuat.cancelOrder', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Huỷ</a>
+                                                        href="{{route('admin.hoadonxuat.AdmincancelOrder', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Huỷ</a>
                                                     @endif
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-primary btn-xs btn-view" href="#"
                                                     data-url="{{ route('admin.hoadonxuat.getView', ['id' => $item->id]) }}"
                                                     ​><i class="fa fa-edit"></i> Xem chi tiết</a>
-                                                    @if($item->status != -1)
-                                                        <a class="btn btn-success btn-xs"
-                                                        href=""><i class="fa fa-trash"></i> In hoá đơn</a>
-                                                    @endif
+                                                    <a class="btn btn-success btn-xs"
+                                                        href="{{ route('admin.hoadonxuat.print', ['id' => $item->id]) }}"><i class="fa fa-trash"></i> In hoá đơn</a>
                                                 </td>
                                             </>
                                         @endif

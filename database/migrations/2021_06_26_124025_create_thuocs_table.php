@@ -23,7 +23,7 @@ class CreateThuocsTable extends Migration
             $table->double('don_gia_nhap')->default(0);
             $table->double('don_gia_ban')->default(0);
             $table->text('ghi_chu')->nullable();
-            $table->text('hinh_anh')->nullable()->default('upload/images/thuoc/no-image.png');
+            $table->text('hinh_anh')->nullable();
             $table->timestamps();
         });
     }

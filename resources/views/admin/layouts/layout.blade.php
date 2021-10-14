@@ -75,9 +75,9 @@
                                 <a href="{{ route('admin.nhanvien.index') }}"><i class="fa fa-group fa-fw"></i> Quản lý nhân viên</a>
                             </li>
                         @endif
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('admin.thongke.index') }}"><i class="fa fa-group fa-fw"></i> Thống kê</a>
-                            </li>
+                            </li> --}}
                     </ul>
                 </div>
             </div>

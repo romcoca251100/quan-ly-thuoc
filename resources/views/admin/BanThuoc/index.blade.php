@@ -63,22 +63,22 @@
                                                 <td>
                                                     @if ($item->status == 0)
                                                         Chưa xác nhận | <a class="btn btn-success btn-xs"
-                                                        href="{{route('admin.hoadonxuat.acceptOrder', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Xác nhận</a>
+                                                        href="{{route('admin.hoadonxuat.acceptOrder', ['id' => $item->id])}}"><i class="fa fa-check"></i> Xác nhận</a>
                                                     @elseif($item->status == 1)
                                                         Đã xác nhận | <a class="btn btn-success btn-xs"
-                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Bắt đầu giao hàng</a>
+                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fas fa-shipping-fast"></i> Bắt đầu giao hàng</a>
                                                     @elseif($item->status == 2)
                                                         Đã giao hàng | 
-                                                        <a class="btn btn-danger btn-xs" href="{{route('admin.hoadonxuat.cancelShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao hàng không thành công</a> | 
-                                                        <a class="btn btn-success btn-xs" href="{{route('admin.hoadonxuat.acceptPayment', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Xác nhận thanh toán</a>
+                                                        <a class="btn btn-danger btn-xs" href="{{route('admin.hoadonxuat.cancelShip', ['id' => $item->id])}}"><i class="fa fa-close"></i> Giao hàng không thành công</a> | 
+                                                        <a class="btn btn-success btn-xs" href="{{route('admin.hoadonxuat.acceptPayment', ['id' => $item->id])}}"><i class="fa fa-check-circle"></i> Xác nhận thanh toán</a>
                                                     @elseif($item->status == 3)
                                                         <b style="color: green;">ĐÃ THANH TOÁN</b>
                                                     @elseif($item->status == -1)
                                                         <b style="color: red;">ĐƠN HÀNG ĐÃ BỊ HUỶ</b>
                                                     @elseif($item->status == -2)
                                                         <b style="color: red;">GIAO HÀNG KHÔNG THÀNH CÔNG</b> | <a class="btn btn-success btn-xs"
-                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Giao lại</a> | <a class="btn btn-danger btn-xs"
-                                                        href="{{route('admin.hoadonxuat.AdmincancelOrder', ['id' => $item->id])}}"><i class="fa fa-trash"></i> Huỷ</a>
+                                                        href="{{route('admin.hoadonxuat.startShip', ['id' => $item->id])}}"><i class="fa fa-sign-out"></i> Giao lại</a> | <a class="btn btn-danger btn-xs"
+                                                        href="{{route('admin.hoadonxuat.AdmincancelOrder', ['id' => $item->id])}}"><i class="fa fa-ban"></i> Huỷ</a>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -86,7 +86,7 @@
                                                     data-url="{{ route('admin.hoadonxuat.getView', ['id' => $item->id]) }}"
                                                     ​><i class="fa fa-edit"></i> Xem chi tiết</a>
                                                     <a class="btn btn-success btn-xs"
-                                                        href="{{ route('admin.hoadonxuat.print', ['id' => $item->id]) }}"><i class="fa fa-trash"></i> In hoá đơn</a>
+                                                        href="{{ route('admin.hoadonxuat.print', ['id' => $item->id]) }}"><i class="fa fa-print"></i> In hoá đơn</a>
                                                 </td>
                                             </>
                                         @endif

@@ -178,7 +178,7 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i> Thống kê số lượng sản phẩm theo Loại sản phẩm</b>
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Thống kê số sản phẩm theo Loại sản phẩm</b>
                             </div>
                             <div class="panel-body">
                                 <div class="chartWrapper">

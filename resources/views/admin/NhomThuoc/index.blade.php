@@ -49,8 +49,8 @@
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên nhóm thuốc</th>
-                                    <th>Chức năng</th>
+                                    <th style="text-align: center;">Tên nhóm thuốc</th>
+                                    <th style="text-align: center;">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,7 +61,7 @@
                                         <tr class="odd gradeX">
                                             <td class="" style="width: 80px; text-align: center;">{{ $i++ }}
                                             </td>
-                                            <td class="" style="font-weight: 600; color: rgb(231, 38, 38)">
+                                            <td class="" style="text-align: center; font-weight: 600; color: rgb(231, 38, 38)">
                                                 {{ $item->ten_nhom_thuoc }}</td>
                                             <td class="center" style="text-align: center;">
                                                 <a class="btn btn-success btn-xs btn-edit" href="#"

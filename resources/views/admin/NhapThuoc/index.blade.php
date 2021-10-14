@@ -71,7 +71,7 @@
                                                     data-url="{{ route('admin.hoadonnhap.getView', ['id' => $item->id]) }}"
                                                     ​><i class="fa fa-edit"></i> Xem chi tiết</a>
                                                 <a class="btn btn-success btn-xs"
-                                                    href="{{ route('admin.hoadonnhap.print', ['id' => $item->id]) }}"><i class="fa fa-trash"></i> In hoá đơn</a>
+                                                    href="{{ route('admin.hoadonnhap.print', ['id' => $item->id]) }}"><i class="fa fa-print"></i> In hoá đơn</a>
                                             </td>
                                         </tr>
                                     @endforeach
